@@ -2,13 +2,27 @@
 
 <h1>Flights</h1>
 
+<%= form_with(url:"/flights", local: true, method: 'get') do |f| %>
+  <% f.label :search, 'Search by Depart ID' %>
+  <%= f.text_field :search %>
+
+  <%= f.submit "Search"%>
+<% end %>
+
+
+
 <div id="flights">
   <% @flights.each do |flight| %>
-    <%= render flight %>
+    <!--<%= render flight %> -->
     <p>
+      <%= render flight %>
+      
       <%= link_to "Show this flight", flight %>
     </p>
+    
+    
   <% end %>
 </div>
 
 <%= link_to "New flight", new_flight_path %>
+
