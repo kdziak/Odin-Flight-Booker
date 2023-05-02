@@ -2,10 +2,26 @@
 
 <h1>Flights</h1>
 
-<%= form_with(url:"/flights", local: true, method: 'get') do |f| %>
+<%= form_with(url:"/flights", method: 'get', local: true) do |f| %>
   <% f.label :search, 'Search by Depart ID' %>
-  <%= f.text_field :search %>
+  <%= f.text_field(:search) %>
 
+  <%= f.submit "Search"%>
+<% end %>
+
+
+<%= form_with(url:"/flights", method: 'get', local: true) do |f| %>
+  <%= f.label "Arrival ID"%>
+  <%= f.select(:arrival_id, options_for_select(@arrival_id, params[:arrival_id])) %>
+  
+  <br>
+  <%= f.label "Depart ID"%>
+  <%= f.select(:depart_id, options_for_select(@depart_id, params[:depart_id])) %>
+  <br>
+  <%= f.date_field(:date) %>
+  <br>
+  <%= f.label "Passengers"%>
+  <%= f.select(:Passengers, options_for_select([1,2,3,4]))%>
   <%= f.submit "Search"%>
 <% end %>
 
